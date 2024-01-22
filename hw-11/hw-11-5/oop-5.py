@@ -1,7 +1,6 @@
-class SuperStr(str):
+class SuperStr:
     def __init__(self, s):
         self.s = s
-        super().__init__()
 
     def is_repeatance(self, s):
         res = len(self.s) % len(s)
@@ -9,7 +8,8 @@ class SuperStr(str):
 
     def is_palindrome(self):
         print(f'Строка {self.s} является палиндромом') if (self.s.lower() ==
-        self.s[::-1].lower() or not self.s) else print('Не палиндром')
+                                                           self.s[::-1].lower() or not self.s) else print(
+            'Не палиндром')
 
 
 sup = SuperStr('abccba')

@@ -6,7 +6,7 @@ class Math:
         if isinstance(a, int) and isinstance(b, int):
             return True
         else:
-            print('Не число')
+            return 'Не число'
     def addition(self, a, b):
         if self.is_number(a, b):
             print(a + b)

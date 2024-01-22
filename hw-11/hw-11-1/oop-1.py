@@ -3,7 +3,7 @@ class Soda:
         self.taste = taste
 
     def print_taste(self):
-        print("У вас обычная газировка") if not self.taste else print(f'К вас газировка со вкусом {self.taste.lower()}')
+        return f"У вас обычная газировка" if not self.taste else f'К вас газировка со вкусом {self.taste.lower()}'
 
 
 strawberry = Soda('Клубника')
