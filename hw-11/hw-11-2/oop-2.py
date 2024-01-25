@@ -3,10 +3,10 @@ class Math:
         pass
 
     def is_number(self, a, b):
-        if isinstance(a, int) and isinstance(b, int):
+        if isinstance(a, (int, float)) and isinstance(b, (int, float)):
             return True
         else:
-            return 'Не число'
+            raise TypeError('ввели не число ')
     def addition(self, a, b):
         if self.is_number(a, b):
             print(a + b)
@@ -28,4 +28,4 @@ class Math:
 
 
 action = Math()
-action.division(3, 3)
+action.division(5, 3)

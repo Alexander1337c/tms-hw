@@ -7,17 +7,17 @@ class Sphere:
 
     def get_volume(self):
         v = (4 / 3) * 3.14 * self.rad ** 3
-        return f"Объем шара {v:.2f} см3"
+        return v
 
     def get_square(self):
         s = 3.14 * 4 * self.rad ** 2
-        return f'Площадь поверхности {s}'
+        return s
 
     def get_radius(self):
-        return f'Радиус текущей сферы {self.rad}'
+        return self.rad
 
     def get_center(self):
-        print(f'Координаты центра окружности {(self.x, self.y, self.z)}')
+        return self.x, self.y, self.z
 
     def set_radius(self, rad):
         self.rad = rad
@@ -35,3 +35,4 @@ class Sphere:
 
 
 shape = Sphere(6, 1, 2, 1)
+print(shape.get_center())
