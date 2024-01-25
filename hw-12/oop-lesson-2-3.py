@@ -59,24 +59,19 @@ class Bus:
         self.speed -= speed
 
     def increase_passenger(self, passenger):
-        if self.max_seats - passenger >= 0:
-            self.max_seats -= passenger
-            return f'Посадили {passenger} пассажиров. \nКолличество свободных мест {self.max_seats}'
+        self.list_of_passenger += passenger
 
     def decrease_passenger(self, passenger):
-        self.max_seats += passenger
-        return f'Высадили {passenger} пассажиров. \nКолличество свободных мест {self.max_seats}'
+        for i in passenger:
+            if i in self.list_of_passenger:
+                self.list_of_passenger.remove(i)
 
     def landing_passenger_last_name(self, passengers):
-        self.list_of_passenger = self.list_passenger + list(passengers)
+        self.list_of_passenger += list(passengers)
 
     def unlanding_passenger_last_name(self, passenger):
-        tmp_psgr_arr = []
         if passenger in self.list_of_passenger:
-            for item in self.list_of_passenger:
-                if item != passenger:
-                    tmp_psgr_arr.append(item)
-                self.list_of_passenger = tmp_psgr_arr
+            self.list_of_passenger.remove(passenger)
         else:
             return f'Такого пассажира нет'
 
@@ -88,14 +83,11 @@ a.decrease_speed(30)
 print(a.speed)
 a.list_passenger = 'Kolas', 'Vishnev', 'Zohan'
 print(a.list_passenger)
-# print(a.unlanding_passenger('fdsf'))
 print(a.list_passenger)
 a.landing_passenger_last_name(['Chopikov', 'Nazarov'])
 print(a.list_passenger)
 a.unlanding_passenger_last_name('Chopikov')
+a.increase_passenger(['Mosak', 'Farad'])
 print(a.list_passenger)
-
-a.max_seats = 60
-print(a.max_seats)
-a.increase_passenger(2)
-print(a.max_seats)
+a.decrease_passenger(['Farad', 'Mosak'])
+print(a.list_passenger)

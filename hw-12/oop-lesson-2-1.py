@@ -1,7 +1,8 @@
 class Product:
-    __name_product = ''
-    __name_store = ''
-    __cost_in_byn = 0
+    def __init__(self, name_product, name_store, cost_in_byn):
+        self.__name = name_product
+        self.__name_store = name_store
+        self.__cost_in_byn = cost_in_byn
 
 
 class Stock:
@@ -49,7 +50,6 @@ class Stock:
         return res
 
 
-Stock.print_products()
 print(Stock.print_product_id(3))
 print(Stock.print_product_name('iphone XR'))
 c1 = Stock('iphone XR')
