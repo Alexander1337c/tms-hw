@@ -6,7 +6,7 @@ class Math:
         if isinstance(a, (int, float)) and isinstance(b, (int, float)):
             return True
         else:
-            raise TypeError('ввели не число ')
+            return False
     def addition(self, a, b):
         if self.is_number(a, b):
             print(a + b)
