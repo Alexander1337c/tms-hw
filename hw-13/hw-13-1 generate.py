@@ -6,11 +6,9 @@ def fib_subs(num):
         num -= 1
 
 
-while True:
-    try:
-        user_input = int(input("До какого числа в последовательности вывести числа Фиббоначи "))
-        a = fib_subs(user_input)
-        print(list(a))
-        break
-    except ValueError as error:
-        print('Ввели не число')
+try:
+    user_input = int(input("До какого числа в последовательности вывести числа Фиббоначи "))
+    a = fib_subs(user_input)
+    print(list(a))
+except ValueError as error:
+    print('Ввели не число')

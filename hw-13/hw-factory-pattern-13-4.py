@@ -25,7 +25,7 @@ class AnimalFactory:
         elif pet == 'cat':
             return Cat()
         else:
-            raise ValueError('Неизвестное животное')
+            raise ValueError('Unknown animal')
 
 
 Boris = AnimalFactory.create_animal('dog')
