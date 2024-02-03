@@ -1,83 +1,98 @@
 class Bus:
     def __init__(self, speed=0, max_seats=0, max_speed=0, list_of_passenger=None, flag_seats=False, dict_seats=None):
         if list_of_passenger is None:
-            self.list_of_passenger = []
+            self.__list_of_passenger = []
         if dict_seats is None:
-            self.dict_seats = {}
-        self.speed = speed
-        self.max_seats = max_seats
-        self.max_speed = max_speed
-        self.flag_seats = flag_seats
+            self.__dict_seats = {}
+        self.__speed = speed
+        self.__max_seats = max_seats
+        self.__max_speed = max_speed
+        self.__flag_seats = flag_seats
 
-    def get_speed(self):
-        return self.speed
+    @property
+    def speed(self):
+        return self.__speed
 
-    def set_speed(self, speed):
-        self.speed = speed
+    @speed.setter
+    def speed(self, speed):
+        self.__speed = speed
 
-    def get_max_speed(self):
-        return self.max_speed
+    @property
+    def max_speed(self):
+        return self.__max_speed
 
-    def set_max_speed(self, max_speed):
-        self.max_speed = max_speed
+    @max_speed.setter
+    def max_speed(self, max_speed):
+        self.__max_speed = max_speed
 
-    def get_max_seats(self):
-        return self.max_seats
+    @property
+    def max_seats(self):
+        return self.__max_seats
 
-    def set_max_seats(self, max_seats):
-        self.max_seats = max_seats
+    @max_seats.setter
+    def max_seats(self, max_seats):
+        self.__max_seats = max_seats
 
-    def get_list_passenger(self):
-        return self.list_of_passenger
+    @property
+    def list_passenger(self):
+        return self.__list_of_passenger
 
-    def set_list_passenger(self, list_passenger):
-        self.list_of_passenger = list(list_passenger)
+    @list_passenger.setter
+    def list_passenger(self, list_passenger):
+        self.__list_of_passenger = list(list_passenger)
 
-    def get_flag_seats(self):
-        return self.flag_seats
+    @property
+    def flag_seats(self):
+        return self.__flag_seats
 
-    def set_flag_seats(self, flag):
-        self.flag_seats = flag
+    @flag_seats.setter
+    def flag_seats(self, flag):
+        self.__flag_seats = flag
 
-    def get_dict_seats(self):
-        return self.dict_seats
+    @property
+    def dict_seats(self):
+        return self.__dict_seats
 
-    def set_dict_seats(self, dict_seats):
-        self.dict_seats = dict_seats
-
-    speed_bus = property(get_speed, set_speed)
-    max_speed_bus = property(get_max_speed, set_max_speed)
-    max_seats_bus = property(get_max_seats, set_max_seats)
-    list_passenger = property(get_list_passenger, set_list_passenger)
-    flag_seats_bus = property(get_flag_seats, set_flag_seats)
-    dict_seats_bus = property(get_dict_seats, set_dict_seats)
+    @dict_seats.setter
+    def dict_seats(self, dict_seats):
+        self.__dict_seats = dict_seats
 
     def increase_speed(self, speed):
-        self.speed += speed
+        self.__speed += speed
 
     def decrease_speed(self, speed):
-        self.speed -= speed
+        self.__speed -= speed
+
+    def change_dict(self):
+        len_pass = len(self.__list_of_passenger)
+        self.__dict_seats = {}
+        for i in range(len_pass):
+            self.__dict_seats[i + 1] = self.__list_of_passenger[i]
 
     def increase_passenger(self, passenger):
-        self.list_of_passenger += passenger
+        self.__list_of_passenger += passenger
+        self.change_dict()
 
     def decrease_passenger(self, passenger):
         for i in passenger:
-            if i in self.list_of_passenger:
-                self.list_of_passenger.remove(i)
+            if i in self.__list_of_passenger:
+                self.__list_of_passenger.remove(i)
+        self.change_dict()
 
     def landing_passenger_last_name(self, passengers):
-        self.list_of_passenger += list(passengers)
+        self.__list_of_passenger += list(passengers)
+        self.change_dict()
 
     def unlanding_passenger_last_name(self, passenger):
-        if passenger in self.list_of_passenger:
-            self.list_of_passenger.remove(passenger)
+        if passenger in self.__list_of_passenger:
+            self.__list_of_passenger.remove(passenger)
+            self.change_dict()
         else:
-            return f'Такого пассажира нет'
+            raise ValueError('Такого пассажира нет')
 
 
 a = Bus()
-a.speed_bus = 90
+a.speed = 90
 print(a.speed)
 a.decrease_speed(30)
 print(a.speed)
@@ -91,3 +106,4 @@ a.increase_passenger(['Mosak', 'Farad'])
 print(a.list_passenger)
 a.decrease_passenger(['Farad', 'Mosak'])
 print(a.list_passenger)
+print(a.dict_seats)
