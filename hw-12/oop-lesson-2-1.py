@@ -52,9 +52,10 @@ class Stock:
                 if item.name.lower() == value.lower():
                     return item
             elif isinstance(value, int):
-                if value > len(self.__products) or item.product_id != value:
+                if value > len(self.__products):
                     raise ValueError('Product not found')
-                return item
+                elif item.product_id == value:
+                    return item
         raise ValueError(f'Product {value} not found')
 
     def __add__(self, other):
@@ -94,7 +95,7 @@ try:
     # a.sort_product_by_store()
     c = a + b
     print(c)
-
+    print(a[3] + a['iphone 12'])
     print(a['iphone 12'])
 
     # print(b.id_x)
