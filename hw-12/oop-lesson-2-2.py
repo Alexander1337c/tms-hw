@@ -12,7 +12,7 @@ class BzzElephant:
 
     @property
     def eat(self):
-        return self
+        return f'{self.bzz, self.elph}'
 
     @eat.setter
     def eat(self, meal_value):
@@ -34,9 +34,7 @@ class BzzElephant:
         self.bzz = 0 if self.bzz < 0 else self.bzz
         self.elph = 0 if self.elph < 0 else self.elph
 
-    @eat.getter
-    def eat(self):
-        return f'{self.bzz, self.elph}'
+
 
 
 bzzzz = BzzElephant(13, 15)
