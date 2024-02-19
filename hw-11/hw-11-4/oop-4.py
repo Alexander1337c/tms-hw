@@ -7,17 +7,17 @@ class Sphere:
 
     def get_volume(self):
         v = (4 / 3) * 3.14 * self.rad ** 3
-        print(f"Объем шара {v:.2f} см3")
+        return v
 
     def get_square(self):
         s = 3.14 * 4 * self.rad ** 2
-        print(f'Площадь поверхности {s}')
+        return s
 
     def get_radius(self):
-        print(f'Радиус текущей сферы {self.rad}')
+        return self.rad
 
     def get_center(self):
-        print(f'Координаты центра окружности {(self.x, self.y, self.z)}')
+        return self.x, self.y, self.z
 
     def set_radius(self, rad):
         self.rad = rad
@@ -29,9 +29,10 @@ class Sphere:
 
     def is_point_inside(self, x, y, z):
         if x ** 2 + y ** 2 + z ** 2 > self.rad ** 2:
-            print(False)
+            return False
         else:
-            print(True)
+            return True
 
 
 shape = Sphere(6, 1, 2, 1)
+print(shape.get_center())
