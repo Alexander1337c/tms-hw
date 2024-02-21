@@ -1,4 +1,5 @@
 from sqlalchemy import select
+from sqlalchemy.orm import joinedload
 from database import create_session
 from models import Authors, Books
 
@@ -8,11 +9,9 @@ class Methods:
     @staticmethod
     def select_books():
         with create_session() as session:
-            query = select(Books)
+            query = select(Books).options(joinedload(Books.authors))
             result = session.execute(query)
             books = result.scalars().all()
-            for item in books:
-                print(item)
             return books
 
     @staticmethod
@@ -49,8 +48,6 @@ class Methods:
             query = select(Authors)
             res = session.execute(query)
             authors = res.scalars().all()
-            for item in authors:
-                print(item)
             return authors
 
     @staticmethod
@@ -63,9 +60,12 @@ class Methods:
     @staticmethod
     def search_book(search_str):
         with create_session() as session:
-            query = select(Books).select_from(Books).where(Books.title_book.contains(search_str))
+            query = select(Books).select_from(Books).where(Books.title_book.contains(search_str)).options(joinedload(Books.authors))
             res = session.execute(query)
             result = res.scalars().all()
             if not result:
-                raise ValueError('Book not found')
-            print(result)
+                return [f'Book not found']
+            return result
+
+
+methods = Methods()

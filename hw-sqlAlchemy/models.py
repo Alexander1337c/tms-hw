@@ -15,8 +15,10 @@ class Authors(Base):
     )
 
     def __str__(self):
-        return f'<Author>: {self.id}. {self.author_name}'
+        return f'{self.id} {self.author_name}'
 
+    def __repr__(self):
+        return str(self)
 
 class Books(Base):
     __tablename__ = "books"
@@ -25,7 +27,7 @@ class Books(Base):
     title_book: Mapped[str]
     author_id: Mapped[int] = mapped_column(ForeignKey("authors.id", ondelete="CASCADE"))
 
-    authors: Mapped["Authors"] = relationship(back_populates="books", )
+    authors: Mapped["Authors"] = relationship(back_populates="books")
 
     def __str__(self):
         return f'{self.id}. {self.title_book}: {self.authors}'
