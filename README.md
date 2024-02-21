@@ -1,0 +1,7 @@
+![image](https://github.com/Alexander1337c/tms-hw/assets/58934936/902b6e2f-b478-4005-81fb-b7d125e29c5f)
+![image](https://github.com/Alexander1337c/tms-hw/assets/58934936/ed865012-34d2-47ac-bdd8-51d30b252e71)
+![image](https://github.com/Alexander1337c/tms-hw/assets/58934936/6bc2e704-00d6-48b3-aa32-ed5cec5cd2b2)
+![image](https://github.com/Alexander1337c/tms-hw/assets/58934936/97c026f2-40a9-4716-9527-2bfcbf618734)
+![image](https://github.com/Alexander1337c/tms-hw/assets/58934936/b46cc26b-54a3-49d8-a9f6-25e0309e4e80)
+![image](https://github.com/Alexander1337c/tms-hw/assets/58934936/64878b8a-d426-4708-8214-874d04de692d)
+![image](https://github.com/Alexander1337c/tms-hw/assets/58934936/26f1f5eb-96de-4a0a-8588-d4da1dfadb46)
