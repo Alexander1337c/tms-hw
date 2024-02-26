@@ -1,0 +1,7 @@
+<div class="sub-menu">
+    {% for item in menu_total %}
+    <div class="item-btn">
+                <button class="btn" ><a href="{{url_for(item.url)}}">{{item.title}}</a></button>
+            </div>
+    {%endfor%}
+</div>

@@ -1,0 +1,25 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+{{ super() }}
+{% include 'authors/base.html' %}
+<div class="main">
+    <div class="wrapper list">
+        <h2>Книга {{book.title_book}}</h2>
+        <div class="book">
+            <p>{{book.title_book}}</p>
+            <span>{{book.authors}}</span>
+        </div>
+        <div class="pagination">
+            {% if book.id > 1 %}
+            <a href="{{url_for('.book_detail', book_id=book.id-1)}}"> &larr; Предыдущая</a>
+            {% endif %}
+            <a href="{{url_for('.select_books')}}">Назад к книгам</a>
+            {% if book.id < total_page %}
+            <a href="{{url_for('.book_detail', book_id=book.id+1)}}">Следующая &rarr;</a>
+            {% endif %}
+        </div>
+    </div>
+
+</div>
+{% endblock %}
