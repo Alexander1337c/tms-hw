@@ -8,6 +8,7 @@ html, body{
 .main{
     display: flex;
     justify-content: center;
+    align-items: center;
 
 }
 .wrapper {
@@ -143,4 +144,33 @@ li a {
 
 .pagination a{
     margin: 7px;
+}
+.login {
+    background-color: beige;
+    border: 3px solid green;
+}
+.login.red{
+    border: 3px solid red;
+}
+.login a{
+    font-size: 14px;
+    color: black;
+    font-weight: 500;
+}
+
+.authorization{
+    margin: 0 auto;
+    margin-top: 6rem;
+}
+.faild{
+   color: red;
+   font-weight: 600;
+   text-align: center;
+}
+.user-log{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 6rem;
+    flex-direction: column;
 }

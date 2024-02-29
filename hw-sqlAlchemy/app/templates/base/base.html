@@ -14,17 +14,30 @@
 </head>
 
 <body>
-    {% block content -%}
-    <div class="main">
-        <div class="wrapper">
-            {% for item in menu %}
-            <div class="item">
-                <button class="menu-btn"><a href="{{url_for(item.url)}}">{{item.title}}</a></button>
-            </div>
-            {% endfor %}
+{% block content -%}
+<div class="main">
+    <div class="wrapper">
+        {% for item in menu %}
+        <div class="item">
+            <button class="menu-btn"><a href="{{url_for(item.url)}}">{{item.title}}</a></button>
         </div>
+        {% endfor %}
     </div>
-    {% endblock -%}
+    {% if g.user %}
+    <div class="user-log">
+        <span>Привет {{g.user.name}}</span>
+        <a href="{{url_for('users.logout')}}">
+            <button class="login red">Выйти</button>
+        </a>
+    </div>
+    {% endif %}
+    {% if not g.user %}
+    <div>
+        <button class="login"><a href="{{url_for('users.login')}}">Войти</a></button>
+    </div>
+    {% endif %}
+</div>
+{% endblock -%}
 </body>
 
 </html>

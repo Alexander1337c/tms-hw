@@ -2,6 +2,7 @@ from sqlalchemy import insert
 from db.database import engine, create_session, Base
 from authors.models import Authors
 from books.models import Books
+from users.models import Users
 
 
 
@@ -9,9 +10,9 @@ class Tables:
     @staticmethod
     def create_tables():
         Base.metadata.drop_all(engine)
-        engine.echo = False
+        engine.echo = True
         Base.metadata.create_all(engine)
-        engine.echo = False
+        engine.echo = True
 
     @staticmethod
     def insert_authors_and_books():
