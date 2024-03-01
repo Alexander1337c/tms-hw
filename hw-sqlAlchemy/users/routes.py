@@ -50,9 +50,10 @@ def login():
             if check_password_hash(user.password, pasw):
                 session['user'] = _id
             else:
-                errors.append('Пароли не совпадают')
+                errors.append('Неверный пароль')
         else:
             errors.append('Такого пользователя не существует')
+        if errors:
             return render_template('users/index.html', title='Вход', menu=menu, errors=errors, cls='faild')
         return redirect(url_for('index_app'))
     if request.method == 'GET':
@@ -61,8 +62,5 @@ def login():
 
 @users.route('/logout', methods=['POST', 'GET'])
 def logout():
-    print('Зашли')
-    print(session.get("user"))
     session.clear()
-    print(session.get("user"))
     return redirect(url_for('.index'))
