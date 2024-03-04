@@ -5,16 +5,16 @@
 {% include 'authors/base.html' %}
 <div class="main">
     <div class="wrapper list">
-        <h2>Список Книг</h2>
-        {% for cat, msg in get_flashed_messages(True) %}
-        <div class="flash {{cat}}">{{msg}}</div>
-        {% endfor %}
+        <h2>Список избранных книг</h2>
         <ul class="list-books">
+            {% if not books %}
+            <h3>У вас нет избранных книг</h3>
+            {% endif %}
             {% for b in books %}
             <li>
-                <a href="{{url_for('.book_detail', book_id=b.id)}}" class="title">{{b.id}}.
+                <a href="{{url_for('.book_detail', book_id=b.id)}}" class="title">
                     {{b.title_book}}.{{b.authors}} | </a>
-                <a href="{{url_for('.add_favorite', book_id=b.id)}}" class="title"><span>&#9734;</span></a>
+                <a href="{{url_for('.add_favorite', book_id=b.id)}}" class="title"><span>удалить</span></a>
             </li>
             {% endfor %}
         </ul>

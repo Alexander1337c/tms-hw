@@ -1,13 +1,13 @@
 from authors import authors
 from .queries import methods
 from flask import render_template, request, flash
-from app.routes import menu
+from app import routes
 
 menu_authors = [{'url': '.add_author', 'title': 'Добавить автора'}, {'url': 'authors.index', 'title': 'Авторы'}]
 
 @authors.route("/")
 def index():
-    return render_template('authors/authors.html', authors=methods.select_authors(), menu=menu, menu_total=menu_authors)
+    return render_template('authors/authors.html', authors=methods.select_authors(), menu=routes.menu, menu_total=menu_authors)
 
 @authors.route("/add_author", methods=["POST", "GET"])
 def add_author():
@@ -20,7 +20,7 @@ def add_author():
             flash("Автор добавлен", category='success')
         else:
             flash("Имя не может быть меньше 2 букв", category='error')
-    return render_template('authors/add_author.html', menu=menu, menu_total=menu_authors)
+    return render_template('authors/add_author.html', menu=routes.menu, menu_total=menu_authors)
 
 
 

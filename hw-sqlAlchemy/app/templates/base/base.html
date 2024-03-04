@@ -17,11 +17,15 @@
 {% block content -%}
 <div class="main">
     <div class="wrapper">
-        {% for item in menu %}
+
+        {% if g.user %}
+        <button class="menu-btn"><a href="{{url_for('books.favorite')}}">Избранные</a></button>
+        {% endif %}
         <div class="item">
+            {% for item in menu %}
             <button class="menu-btn"><a href="{{url_for(item.url)}}">{{item.title}}</a></button>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
     {% if g.user %}
     <div class="user-log">

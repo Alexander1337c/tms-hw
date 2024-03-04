@@ -1,8 +1,9 @@
 from db.database import create_session
 from books.models import Books
+from users import models
 
 from sqlalchemy import select
-from sqlalchemy.orm import joinedload
+from sqlalchemy.orm import joinedload, selectinload
 
 
 class Methods_books:
@@ -60,6 +61,28 @@ class Methods_books:
             if not result:
                 return [f'Book not found']
             return result
+
+    @staticmethod
+    def add_favorite(user_id, book_id):
+        with create_session() as session:
+            user = session.get(models.Users, user_id)
+            book = session.get(Books, book_id)
+            try:
+                user.books_favorite.append(book)
+                session.commit()
+                return True
+            except:
+                return False
+
+    @staticmethod
+    def get_favorite_books(user_id):
+        with create_session() as session:
+            query = select(models.Users).filter(models.Users.id == user_id).options(
+                joinedload(models.Users.books_favorite).options(joinedload(Books.authors)))
+            res = session.execute(query)
+            books_favorite = res.scalars().unique().all()
+            list_books = books_favorite[0].books_favorite
+            return list_books
 
 
 methods = Methods_books()
