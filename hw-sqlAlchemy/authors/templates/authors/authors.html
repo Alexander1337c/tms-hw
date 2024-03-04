@@ -1,0 +1,13 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+{{ super() }}
+{% include 'authors/base.html' %}
+<div class="author">
+    <h2>Авторы</h2>
+    {% for author in authors %}
+    <p>{{author}}</p>
+    {%endfor%}
+</div>
+
+{% endblock %}

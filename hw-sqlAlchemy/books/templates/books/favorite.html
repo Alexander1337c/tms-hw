@@ -1,0 +1,24 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+{{ super() }}
+{% include 'authors/base.html' %}
+<div class="main">
+    <div class="wrapper list">
+        <h2>Список избранных книг</h2>
+        <ul class="list-books">
+            {% if not books %}
+            <h3>У вас нет избранных книг</h3>
+            {% endif %}
+            {% for b in books %}
+            <li>
+                <a href="{{url_for('.book_detail', book_id=b.id)}}" class="title">
+                    {{b.title_book}}.{{b.authors}} | </a>
+                <a href="{{url_for('.delete_favorite', book_id=b.id)}}" class="title"><span>удалить</span></a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</div>
+{% endblock %}

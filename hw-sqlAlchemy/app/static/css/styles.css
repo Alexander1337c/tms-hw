@@ -1,0 +1,178 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial';
+    box-sizing: border-box;
+}
+
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.wrapper {
+    margin-top: 6rem;
+    width: 600px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.wrapper.list{
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.item {
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+}
+button {
+    width: 13rem;
+    height: 2rem;
+    border-radius: 6px;
+    border: 1px solid gray;
+}
+ul{
+    list-style: none;
+    padding: 0px;
+}
+.author{
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    margin: 0 auto;
+    align-items: center;
+    padding: 10px;
+
+}
+.author p{
+    margin: 4px
+}
+p label{
+    display: flex;
+    flex-direction: column;
+}
+.wrap-add-book{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.flash {padding: 10px;}
+.flash.success {
+	border: 1px solid #21DB56;
+	background: #AEFFC5;
+}
+.flash.error {
+	border: 1px solid #FF4343;
+	background: #FF9C9C;
+}
+
+.form-contact :last-child{
+    margin: 4px;
+}
+
+.sub-menu{
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.item-btn{
+    margin: 15px
+}
+
+.menu-btn{
+    width: 13rem;
+    height: 4rem;
+    border: none;
+    border-radius: 6px;
+    margin: 7px;
+}
+.btn{
+    padding: 10px;
+    height: 3rem;
+    border: none;
+    background-color: darkorange;
+    border-radius: 6px;
+}
+input{
+    border: none;
+    border-bottom: 1px solid gray;
+    padding: 10px
+}
+a{
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+}
+ul li{
+    margin: 8px;
+}
+li a {
+    font-size: 16px;
+    color: black;
+    margin: 7px;
+    text-decoration: underline;
+}
+
+.book{
+    padding: 30px;
+    background-color: cadetblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.book p{
+    color: white;
+    font-size: 22px;
+}
+
+.book span{
+    font-weight: 14px;
+}
+
+.pagination{
+    display: flex;
+    margin-top: 15px;
+}
+
+.pagination a{
+    margin: 7px;
+}
+.login {
+    background-color: beige;
+    border: 3px solid green;
+}
+.login.red{
+    border: 3px solid red;
+}
+.login a{
+    font-size: 14px;
+    color: black;
+    font-weight: 500;
+}
+
+.authorization{
+    margin: 0 auto;
+    margin-top: 6rem;
+}
+.faild{
+   color: red;
+   font-weight: 600;
+   text-align: center;
+}
+.user-log{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 6rem;
+    flex-direction: column;
+}

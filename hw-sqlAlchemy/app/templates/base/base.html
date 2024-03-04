@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link type="text/css" href="{{url_for('static', filename='css/styles.css')}}" rel="stylesheet">
+    <meta charset="UTF-8">
+    {% block title -%}
+    {% if title %}
+    <title>{{title}}</title>
+    {% else %}
+    <title>Книги</title>
+    {% endif %}
+    {% endblock %}
+</head>
+
+<body>
+{% block content -%}
+<div class="main">
+    <div class="wrapper">
+
+        {% if g.user %}
+        <button class="menu-btn"><a href="{{url_for('books.favorite')}}">Избранные</a></button>
+        {% endif %}
+        <div class="item">
+            {% for item in menu %}
+            <button class="menu-btn"><a href="{{url_for(item.url)}}">{{item.title}}</a></button>
+            {% endfor %}
+        </div>
+    </div>
+    {% if g.user %}
+    <div class="user-log">
+        <span>Привет {{g.user.name}}</span>
+        <a href="{{url_for('users.logout')}}">
+            <button class="login red">Выйти</button>
+        </a>
+    </div>
+    {% endif %}
+    {% if not g.user %}
+    <div>
+        <button class="login"><a href="{{url_for('users.login')}}">Войти</a></button>
+    </div>
+    {% endif %}
+</div>
+{% endblock -%}
+</body>
+
+</html>

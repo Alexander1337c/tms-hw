@@ -1,0 +1,27 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+{{ super() }}
+{% include 'authors/base.html' %}
+<div class="wrap-add-book">
+    <h2>Добавление книги</h2>
+    {% for cat, msg in get_flashed_messages(True) %}
+    <div class="flash {{cat}}">{{msg}}</div>
+    {% endfor %}
+    <form action="{{url_for('.add_book')}}" method="post" class="form-contact">
+        <p><label>Название книги: </label>
+            <input type="text" name="name" value="" placeholder="Название" required/>
+        <p><label>id Автора:</label>
+            <input type="number" name="id" value="" placeholder="id автора" required/>
+        <p><input type="submit" value="Добавить"/>
+    </form>
+
+
+</div>
+<div class="author">
+    {% for author in authors %}
+    <p>{{author}}</p>
+    {%endfor%}
+</div>
+
+{% endblock %}

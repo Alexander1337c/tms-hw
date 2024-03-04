@@ -1,0 +1,24 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+{{ super() }}
+{% for msg in errors %}
+<p class='{{cls}}'>{{ msg }}</p>
+{% endfor %}
+<div class="wrapper authorization">
+    <form action="{{url_for('.register')}}" method="post" class="form-contact">
+        <p><label>Имя </label>
+            <input type="text" name="name" value="" placeholder="Введите имя" required/>
+        <p><label>Email </label>
+            <input type="email" name="email" value="" placeholder="Введите email" required/>
+        <p><label>Пароль </label>
+            <input type="password" name="password1" value="" placeholder="Введите пароль" required/>
+        <p><label>Повторите пароль </label>
+            <input type="password" name="password2" value="" placeholder="Введите пароль" required/>
+        <p><input type="submit" value="Зарегистрироваться"/>
+        <hr>
+        <span>Есть аккаунта? <a href="{{url_for('.login')}}">Войти</a></span>
+    </form>
+</div>
+{% include 'authors/base.html' %}
+{% endblock %}
