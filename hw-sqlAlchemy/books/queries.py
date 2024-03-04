@@ -1,5 +1,5 @@
 from db.database import create_session
-from books.models import Books
+from books.models import Books, FavoriteUsersBook
 from users import models
 
 from sqlalchemy import select
@@ -84,5 +84,15 @@ class Methods_books:
             list_books = books_favorite[0].books_favorite
             return list_books
 
+    @staticmethod
+    def delete_favorite_book(user_id, book_id):
+        with create_session() as session:
+            res = select(FavoriteUsersBook, user_id).filter(FavoriteUsersBook.book_id == book_id)
+            try:
+                result = session.execute(res).scalars().one()
+                session.delete(result)
+                session.commit()
+            except:
+                return False
 
 methods = Methods_books()

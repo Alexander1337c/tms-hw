@@ -81,6 +81,15 @@ def add_favorite(book_id):
                            books=methods.select_books())
 
 
+@books.route('/delete_favorite/<int:book_id>', methods=["POST", "GET"])
+def delete_favorite(book_id):
+    if g.user:
+        flash('Книга удалена', category='success')
+        methods.delete_favorite_book(g.user.id, book_id)
+    return render_template('books/favorite.html', menu=routes.menu, menu_total=menu_books,
+                           books=methods.get_favorite_books(g.user.id))
+
+
 @books.route('/favorite', methods=["POST", "GET"])
 def favorite():
     return render_template('books/favorite.html', menu=routes.menu, menu_total=menu_books,
