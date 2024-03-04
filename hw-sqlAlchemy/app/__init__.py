@@ -1,8 +1,9 @@
 from flask import Flask
+from db.config import settings
 
 app = Flask(__name__)
-
-app.config['SECRET_KEY'] = 'dfh12u3124j5'
+print(settings)
+app.config['SECRET_KEY'] = settings.SECRET_KEY
 
 from app.routes import *
 
